@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "vincent-2ab24",
+    "start": "vincent-2ab24"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}
