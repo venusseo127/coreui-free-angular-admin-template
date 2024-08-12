@@ -36,6 +36,12 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom(SidebarModule, DropdownModule),
     IconSetService,
-    provideAnimations(), provideFirebaseApp(() => initializeApp({"projectId":"vincent-2ab24","appId":"1:544503008995:web:e281ddc2310bb852747fd6","databaseURL":"https://vincent-2ab24-default-rtdb.firebaseio.com","storageBucket":"vincent-2ab24.appspot.com","locationId":"us-central","apiKey":"AIzaSyD9HF-QPTyudNiu46kKo8k0FH58gLVIyGg","authDomain":"vincent-2ab24.firebaseapp.com","messagingSenderId":"544503008995","measurementId":"G-10SBLF8DYS"})), provideAuth(() => getAuth()), provideFirestore(() => getFirestore()), provideMessaging(() => getMessaging()), provideStorage(() => getStorage())
+    provideAnimations(),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFunctions(() => getFunctions()),
+    provideFirestore(() => getFirestore()),
+    provideMessaging(() => getMessaging()),
+    provideStorage(() => getStorage()),
   ]
 };

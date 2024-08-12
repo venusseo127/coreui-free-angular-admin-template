@@ -1,5 +1,13 @@
 import { Routes } from '@angular/router';
+import {
+  AuthGuard,
+  redirectLoggedInTo,
+  redirectUnauthorizedTo,
+} from '@angular/fire/auth-guard';
 import { DefaultLayoutComponent } from './layout';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
+const redirectLoggedInToHome = () => redirectLoggedInTo(['dashboard']);
 
 export const routes: Routes = [
   {
@@ -10,8 +18,10 @@ export const routes: Routes = [
   {
     path: '',
     component: DefaultLayoutComponent,
+    canActivate: [AuthGuard],
     data: {
-      title: 'Home'
+      title: 'Home',
+      authGuardPipe: redirectUnauthorizedToLogin
     },
     children: [
       {
@@ -73,15 +83,19 @@ export const routes: Routes = [
   {
     path: 'login',
     loadComponent: () => import('./views/pages/login/login.component').then(m => m.LoginComponent),
+    canActivate: [AuthGuard],
     data: {
-      title: 'Login Page'
+      title: 'Login Page',
+      authGuardPipe: redirectLoggedInToHome
     }
   },
   {
     path: 'register',
     loadComponent: () => import('./views/pages/register/register.component').then(m => m.RegisterComponent),
+    canActivate: [AuthGuard],
     data: {
-      title: 'Register Page'
+      title: 'Register Page',
+      authGuardPipe: redirectUnauthorizedToLogin
     }
   },
   { path: '**', redirectTo: 'dashboard' }

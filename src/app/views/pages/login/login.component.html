@@ -37,6 +37,13 @@
                     </button>
                   </c-col>
                 </c-row>
+                <c-row style="padding: 10px;">
+                  <button class="transition-all w-[300px] bg-white shadow-md flex flex-wrap items-center rounded-lg p-2 hover:shadow-xl justify-between"
+                  (click)="this.commonService.login()" style="margin-top: 10px;">
+                    <img src="../../../assets/Google.png" class="w-8 m-2" />
+                    <span class="text-slate-700 text-xl flex-grow">Sign in with Google</span>
+                  </button>
+                </c-row>
               </form>
             </c-card-body>
           </c-card>
